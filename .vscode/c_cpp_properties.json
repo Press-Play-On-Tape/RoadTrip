@@ -45,7 +45,6 @@
                 "/Users/simonholmes/Documents/Arduino/libraries/Arduboy2/src",
                 "/Users/simonholmes/Library/Arduino15/packages/arduboy-homemade/hardware/avr/1.2.9/libraries/EEPROM/src",
                 "/Users/simonholmes/Documents/Arduino/libraries/FixedPoints/src",
-                "/Users/simonholmes/Documents/Arduino/libraries/ArduboyTones/src",
                 "/Applications/Programming/Arduino.app/Contents/Java/hardware/tools/avr/lib/gcc/avr/7.3.0/include",
                 "/Applications/Programming/Arduino.app/Contents/Java/hardware/tools/avr/lib/gcc/avr/7.3.0/include-fixed",
                 "/Applications/Programming/Arduino.app/Contents/Java/hardware/tools/avr/avr/include"
@@ -564,7 +563,8 @@
                 "__cpp_init_captures=201304",
                 "__ATOMIC_ACQ_REL=4",
                 "__ATOMIC_RELEASE=3",
-                "__BUILTIN_AVR_FMUL=1"
+                "__BUILTIN_AVR_FMUL=1",
+                "USBCON"
             ]
         }
     ]

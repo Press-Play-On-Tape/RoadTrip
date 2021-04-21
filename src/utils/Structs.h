@@ -9,6 +9,7 @@ struct TitleVars {
     uint8_t offset = 0;
     bool flyIn = true;
     TitleState titleState = TitleState::StartGame;
+    bool seenAim = false;
 
     void reset() {
 

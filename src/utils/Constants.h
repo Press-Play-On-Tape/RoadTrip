@@ -15,7 +15,7 @@
 #define CACTII
 #define DISPLAY_WIDTH 128
 #define DISPLAY_HEIGHT 64
-#define SOUNDS
+#define _SOUNDS
 #define _SHOW_GOAL
 
 #define UPM 64 // int16_ts per meter
@@ -32,7 +32,7 @@ namespace Constants {
     constexpr uint8_t PlayerCarHeightPX = 17;
     constexpr uint8_t OtherCarWidthUnits = 74;
     constexpr uint8_t OtherCarLengthUnits = 60;
-    constexpr uint8_t CollisionTollerance_X = 68;
+    constexpr uint8_t CollisionTollerance_X = 65;
     constexpr uint8_t CollisionTollerance_Z = 50;
 
     constexpr uint16_t SpeedDiv = 1800;//3000;

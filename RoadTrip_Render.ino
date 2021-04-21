@@ -146,7 +146,7 @@ void renderPlayerCar() {
     switch (carSpeed) {
 
         case 0 ... 1:
-            index = 0;
+            index = 1;
             break;
 
         case 2 ... 14:

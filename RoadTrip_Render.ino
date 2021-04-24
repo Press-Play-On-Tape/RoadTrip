@@ -80,22 +80,20 @@ void renderHud() {
     }
 
 
-    // Render distance travelled ..
+    // Render distance travelled (score)..
 
     {
-		uint8_t digits[5] = {};
-		extractDigits(digits, gamePlayVars.distance / 10);
-		
-		for (uint8_t i = 0, x2 = 84 ; i < 5; ++i, x2 -= 6) {
-			Sprites::drawOverwrite(x2, 1, Images::numbers_white, digits[i]);
-		}
+        uint8_t digits[5] = {};
+        extractDigits(digits, gamePlayVars.distance / 10);
+        
+        for (uint8_t i = 0, x2 = 84 ; i < 5; ++i, x2 -= 6) {
+            Sprites::drawOverwrite(x2, 1, Images::numbers_white, digits[i]);
+        }
 
-		Sprites::drawOverwrite(90, 1, Images::numbers_black, gamePlayVars.distance % 10);
-        arduboy.drawFastHLine(60, 1, 37, BLACK);
-        arduboy.drawFastHLine(60, 9, 37, BLACK);
+        Sprites::drawOverwrite(90, 1, Images::numbers_black, gamePlayVars.distance % 10);
+        arduboy.drawFastHLine(60, 9, 37, BLACK); // Lower horizontal line of frame
 
-        arduboy.drawFastVLine(90, 1, 8, BLACK);
-
+        // Draw right vertical line of frame
         if (gamePlayVars.getTimeOfDay() == TimeOfDay::Day) {
             arduboy.drawFastVLine(96, 1, 8, BLACK);
         }
@@ -104,7 +102,7 @@ void renderHud() {
            arduboy.drawFastVLine(96, 2, 7, WHITE);
         }
 
-	}
+    }
 
 
 

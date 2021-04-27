@@ -86,7 +86,7 @@ const uint8_t PROGMEM numbers_white[] = {
 
 
 const uint8_t PROGMEM numbers_black[] = {
-    6, 8,
+    7, 8,
 
     // #048 Number '0' (U+0030 Digit Zero)
     0x00,  // ░░░░░░░░
@@ -94,6 +94,7 @@ const uint8_t PROGMEM numbers_black[] = {
     0x38,  // ░░▓▓▓░░░
     0x44,  // ░▓░░░▓░░
     0x38,  // ░░▓▓▓░░░
+    0x00,  // ░░░░░░░░
     0x00,  // ░░░░░░░░
     
     // #049 Number '1' (U+0031 Digit One)
@@ -103,7 +104,8 @@ const uint8_t PROGMEM numbers_black[] = {
     0x7C,  // ░▓▓▓▓▓░░
     0x40,  // ░▓░░░░░░
     0x00,  // ░░░░░░░░
-    
+    0x00,  // ░░░░░░░░
+
     // #050 Number '2' (U+0032 Digit Two)
     0x00,  // ░░░░░░░░
     0x00,  // ░░░░░░░░
@@ -111,7 +113,8 @@ const uint8_t PROGMEM numbers_black[] = {
     0x54,  // ░▓░▓░▓░░
     0x48,  // ░▓░░▓░░░
     0x00,  // ░░░░░░░░
-    
+    0x00,  // ░░░░░░░░
+
     // #051 Number '3' (U+0033 Digit Three)
     0x00,  // ░░░░░░░░
     0x00,  // ░░░░░░░░
@@ -119,7 +122,8 @@ const uint8_t PROGMEM numbers_black[] = {
     0x54,  // ░▓░▓░▓░░
     0x28,  // ░░▓░▓░░░
     0x00,  // ░░░░░░░░
-    
+    0x00,  // ░░░░░░░░
+
     // #052 Number '4' (U+0034 Digit Four)
     0x00,  // ░░░░░░░░
     0x00,  // ░░░░░░░░
@@ -127,7 +131,8 @@ const uint8_t PROGMEM numbers_black[] = {
     0x28,  // ░░▓░▓░░░
     0x7C,  // ░▓▓▓▓▓░░
     0x00,  // ░░░░░░░░
-    
+    0x00,  // ░░░░░░░░
+
     // #053 Number '5' (U+0035 Digit Five)
     0x00,  // ░░░░░░░░
     0x00,  // ░░░░░░░░
@@ -135,7 +140,8 @@ const uint8_t PROGMEM numbers_black[] = {
     0x54,  // ░▓░▓░▓░░
     0x24,  // ░░▓░░▓░░
     0x00,  // ░░░░░░░░
-    
+    0x00,  // ░░░░░░░░
+
     // #054 Number '6' (U+0036 Digit Six)
     0x00,  // ░░░░░░░░
     0x00,  // ░░░░░░░░
@@ -143,7 +149,8 @@ const uint8_t PROGMEM numbers_black[] = {
     0x54,  // ░▓░▓░▓░░
     0x20,  // ░░▓░░░░░
     0x00,  // ░░░░░░░░
-    
+    0x00,  // ░░░░░░░░
+
     // #055 Number '7' (U+0037 Digit Seven)
     0x00,  // ░░░░░░░░
     0x00,  // ░░░░░░░░
@@ -151,7 +158,8 @@ const uint8_t PROGMEM numbers_black[] = {
     0x74,  // ░▓▓▓░▓░░
     0x0C,  // ░░░░▓▓░░
     0x00,  // ░░░░░░░░
-    
+    0x00,  // ░░░░░░░░
+
     // #056 Number '8' (U+0038 Digit Eight)
     0x00,  // ░░░░░░░░
     0x00,  // ░░░░░░░░
@@ -159,12 +167,15 @@ const uint8_t PROGMEM numbers_black[] = {
     0x54,  // ░▓░▓░▓░░
     0x28,  // ░░▓░▓░░░
     0x00,  // ░░░░░░░░
-    
+    0x00,  // ░░░░░░░░
+
     // #057 Number '9' (U+0039 Digit Nine)
     0x00,  // ░░░░░░░░
     0x00,  // ░░░░░░░░
     0x08,  // ░░░░▓░░░
     0x54,  // ░▓░▓░▓░░
     0x38,  // ░░▓▓▓░░░
+    0x00,  // ░░░░░░░░
     0x00   // ░░░░░░░░
+
 };

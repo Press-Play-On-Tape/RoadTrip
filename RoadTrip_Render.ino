@@ -86,21 +86,12 @@ void renderHud() {
         uint8_t digits[5] = {};
         extractDigits(digits, gamePlayVars.distance / 10);
         
-        for (uint8_t i = 0, x2 = 84 ; i < 5; ++i, x2 -= 6) {
+        for (uint8_t i = 0, x2 = 82 ; i < 4; ++i, x2 -= 6) {
             Sprites::drawOverwrite(x2, 1, Images::numbers_white, digits[i]);
         }
 
-        Sprites::drawOverwrite(90, 1, Images::numbers_black, gamePlayVars.distance % 10);
-        arduboy.drawFastHLine(60, 9, 37, BLACK); // Lower horizontal line of frame
-
-        // Draw right vertical line of frame
-        if (gamePlayVars.getTimeOfDay() == TimeOfDay::Day) {
-            arduboy.drawFastVLine(96, 1, 8, BLACK);
-        }
-        else {
-           arduboy.drawFastVLine(97, 2, 7, BLACK);
-           arduboy.drawFastVLine(96, 2, 7, WHITE);
-        }
+        Sprites::drawOverwrite(88, 1, Images::numbers_black, gamePlayVars.distance % 10);
+        arduboy.drawFastHLine(64, 9, 31, BLACK); // Lower horizontal line of frame
 
     }
 

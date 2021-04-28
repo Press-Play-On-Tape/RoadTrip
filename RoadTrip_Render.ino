@@ -309,98 +309,43 @@ void renderRoad_Dither_Light(int16_t &startPos, int16_t endPos, int16_t y, bool 
 
 void renderDayBanner() {
 
-    #ifdef SHOW_GOAL
-        
-        uint8_t x = 0;
-        uint8_t noToRender = 0;
-        uint8_t const *image = nullptr;
+    uint8_t x = 0;
 
-        if (gamePlayVars.showDayBannerCount > 0) {
+    if (gamePlayVars.showDayBannerCount > 0) {
 
-            Sprites::drawExternalMask(16, 8, Images::StartOfDay, Images::StartOfDay_Mask, 0, 0);
+        Sprites::drawExternalMask(16, 8, Images::StartOfDay, Images::StartOfDay_Mask, 0, 0);
 
-            switch ((gamePlayVars.showDayBannerCount / 50) % 2) {
-
-                case true:
-                    x = 2;
-                    image = Images::Goal; 
-                    noToRender = gamePlayVars.carsPassed;
-                    break;
-
-                case false:
-                    x = 4;
-                    image = Images::Day; 
-                    noToRender = gamePlayVars.days;
-                    break;
-
-            }
-
-            switch (noToRender) {
-
-                case 1 ... 9:
-                    x = x + 49;
-                    break;
-
-                case 10 ... 99:
-                    x = x + 46;
-                    break;
-
-                case 100 ... 255:
-                    x = x + 44;
-                    break;
-
-            }
-
-            Sprites::drawOverwrite(x, 18, image, 0);
-            x = x + ((gamePlayVars.showDayBannerCount / 50) % 2 ? 22 : 18);
-
-            {
-                if (noToRender > 100)  { Sprites::drawOverwrite(x, 18, Images::Font4x6, ((noToRender / 100) + 26));  noToRender = noToRender - ((noToRender / 100) * 100); x = x + 5; }
-                if (noToRender > 10)   { Sprites::drawOverwrite(x, 18, Images::Font4x6, ((noToRender / 10) + 26));  noToRender = noToRender % 10; x = x + 5; }
-                Sprites::drawOverwrite(x, 18, Images::Font4x6, noToRender + 26);
-
-            }
-
+        switch (gamePlayVars.days) {
+            case 1 ... 9:
+                x = 48 + 5;
+                break;
+            case 10 ... 99:
+                x = 48 + 2;
+                break;
+            case 100 ... 9999:
+                x = 48;
+                break;
         }
 
-    #else
-        
-        uint8_t x = 0;
+        Sprites::drawOverwrite(x, 18, Images::Day, 0);
+        x = x + 18;
 
-        if (gamePlayVars.showDayBannerCount > 0) {
-
-            Sprites::drawExternalMask(16, 8, Images::StartOfDay, Images::StartOfDay_Mask, 0, 0);
-
-            switch (gamePlayVars.days) {
-
-                case 1 ... 9:
-                    x = 48 + 5;
-                    break;
-
-                case 10 ... 99:
-                    x = 48 + 2;
-                    break;
-
-                case 100 ... 9999:
-                    x = 48;
-                    break;
-
+        {
+            uint8_t newDay = gamePlayVars.days;
+            if (newDay > 100)  {
+                Sprites::drawOverwrite(x, 18, Images::Font4x6, ((newDay / 100) + 26));
+                newDay = newDay - ((newDay / 100) * 100);
+                x = x + 5;
             }
-
-            Sprites::drawOverwrite(x, 18, Images::Day, 0);
-            x = x + 18;
-
-            {
-                uint8_t newDay = gamePlayVars.days;
-                if (newDay > 100)  { Sprites::drawOverwrite(x, 18, Images::Font4x6, ((newDay / 100) + 26));  newDay = newDay - ((newDay / 100) * 100); x = x + 5; }
-                if (newDay > 10)   { Sprites::drawOverwrite(x, 18, Images::Font4x6, ((newDay / 10) + 26));  newDay = newDay % 10; x = x + 5; }
-                Sprites::drawOverwrite(x, 18, Images::Font4x6, newDay + 26);
-
+            if (newDay > 10)   {
+                Sprites::drawOverwrite(x, 18, Images::Font4x6, ((newDay / 10) + 26));
+                newDay = newDay % 10;
+                x = x + 5;
             }
-
+            Sprites::drawOverwrite(x, 18, Images::Font4x6, newDay + 26);
         }
 
-    #endif
+    }
 
 }
 

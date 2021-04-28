@@ -16,7 +16,6 @@
 #define DISPLAY_WIDTH 128
 #define DISPLAY_HEIGHT 64
 #define _SOUNDS
-#define _SHOW_GOAL
 
 #define UPM 64 // int16_ts per meter
 

@@ -93,13 +93,8 @@ void renderHud() {
         Sprites::drawOverwrite(90, 1, Images::numbers_black, gamePlayVars.distance % 10);
         arduboy.drawFastHLine(60, 9, 37, BLACK); // Lower horizontal line of frame
 
-        // Draw right vertical line of frame
-        if (gamePlayVars.getTimeOfDay() == TimeOfDay::Day) {
-            arduboy.drawFastVLine(96, 1, 8, BLACK);
-        }
-        else {
-           arduboy.drawFastVLine(97, 2, 7, BLACK);
-           arduboy.drawFastVLine(96, 2, 7, WHITE);
+        if (gamePlayVars.getTimeOfDay() != TimeOfDay::Day) {
+            arduboy.drawFastVLine(96, 2, 7, WHITE); // Highlight right vertical line of frame
         }
 
     }

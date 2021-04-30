@@ -362,65 +362,54 @@ void renderLights() {
 
     if (gamePlayVars.showDayBannerCount > 0) {
 
-
         Sprites::drawExternalMask(3, 18, Images::Lights, Images::Lights_Mask, 0, 0);
 
         switch (gamePlayVars.showDayBannerCount) {
+        // NewDayBannerDelay count down from 130...
 
-            case 0 ... 19:
-                renderLights_Shown(7);
-                arduboy.setRGBled(0, 0, 0);
+            // Get Ready...
+            case 110:
+                arduboy.setRGBled(32, 0, 0); // Red
+                #ifdef SOUNDS
+                    sound.tones(Sounds::Lights_Short);
+                #endif
+                /*-fallthrough*/
+            case 81 ... 109:
+                arduboy.fillRect(11, 24, 3, 3, WHITE); // Illuminate light 1 (top)
                 break;
 
-            case 20 ... 49:
-                renderLights_Shown(7);
+            // Get Set...
+            case 80:
+                arduboy.setRGBled(24, 24, 0); // Amber
+                #ifdef SOUNDS
+                    sound.tones(Sounds::Lights_Short);
+                #endif
+                /*-fallthrough*/
+            case 51 ... 79:
+                arduboy.fillRect(11, 30, 3, 3, WHITE); // Illuminate light 2 (middle)
                 break;
 
+            // Go! ...
             case 50:
-                renderLights_Shown(7);
-                arduboy.setRGBled(0, 32, 0);
+                arduboy.setRGBled(0, 48, 0); // Green
                 #ifdef SOUNDS
                     sound.tones(Sounds::Lights_Long);
                 #endif
+                /*-fallthrough*/
+            case 20 ... 49:
+                arduboy.fillRect(11, 36, 3, 3, WHITE); // Illuminate light 3 (bottom)
+                break;
+                
+            case 0 ... 19:
+                arduboy.setRGBled(0, 0, 0);
+                arduboy.fillRect(11, 36, 3, 3, WHITE); // Illuminate light 3 (bottom)
                 break;
 
-            case 51 ... 79:
-                renderLights_Shown(3);
-                break;
-
-            case 80:
-                renderLights_Shown(3);
-                arduboy.setRGBled(32, 0, 32);
-                #ifdef SOUNDS
-                    sound.tones(Sounds::Lights_Short);
-                #endif
-                break;
-
-            case 81 ... 109:
-                renderLights_Shown(1);
-                break;
-
-            case 110:
-                renderLights_Shown(1);
-                arduboy.setRGBled(32, 0, 0);
-                #ifdef SOUNDS
-                    sound.tones(Sounds::Lights_Short);
-                #endif
-                break;
-
-            case 111 ... 130:
+            default:
                 break;
 
         }
 
     }
-
-}
-
-void renderLights_Shown(uint8_t lights) {
-
-    if (lights == 7)    arduboy.fillRect(11, 36, 3, 3, WHITE);
-    if (lights == 3)    arduboy.fillRect(11, 30, 3, 3, WHITE);
-    if (lights == 1)    arduboy.fillRect(11, 24, 3, 3, WHITE); 
 
 }

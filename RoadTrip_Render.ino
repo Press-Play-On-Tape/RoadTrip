@@ -44,33 +44,27 @@ void renderHud() {
     {
         uint8_t tacho = car.getTacho();
         uint8_t offset = car.getTransmissionType() == TransmissionType::Manual ? 0 : 4;
-        
-        Sprites::drawExternalMask(26 + offset, 1, Images::Tacho, Images::Tacho_Mask, 0, 0);
+
+        Sprites::drawOverwrite(26 + offset, 1, Images::Tacho, 0); // Render Tachometer gauge
+        arduboy.drawFastHLine(26 + offset, 9, 27, BLACK); // Lower horizontal line of frame
 
         if (tacho == 1) {
-
+            // Flash a solid bar to warn when under revving
             if (arduboy.getFrameCountHalf(32)) {
-
                 arduboy.drawRect(28 + offset, 3, 2, 5, BLACK);
-
             }
 
         }
         else {
 
             for (uint8_t i = 0, x = 28; i < tacho; i++, x = x + 3) {
-
                 switch (i) {
-
                     case 0 ... 5:
-                        arduboy.drawFastVLine(x + offset, 3, 5, BLACK);
+                        arduboy.drawFastVLine(x + offset, 3, 5, BLACK); // Render low revs line
                         break;
-
-                    case 6 ... 7:
-
-                        arduboy.drawRect(x + offset, 3, 2, 5, BLACK);
+                    default:
+                        arduboy.drawRect(x + offset, 3, 2, 5, BLACK); // Render high revs bar
                         break;
-
                 }
 
             } 

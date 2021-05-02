@@ -60,6 +60,12 @@ struct GamePlayVars {
     uint8_t brakeCount = 0;
     Direction brakeSide = Direction::None;
 
+    void decZ() {
+
+        this->previousZ = this->previousZ - Constants::ZReduction;
+
+    }
+
     void reset() {
 
         this->distance = 0;

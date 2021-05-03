@@ -320,12 +320,12 @@ void renderDayBanner() {
 
         {
             uint8_t newDay = gamePlayVars.days;
-            if (newDay > 100)  {
+            if (newDay >= 100)  {
                 Sprites::drawOverwrite(x, 18, Images::Font4x6, ((newDay / 100) + 26));
                 newDay = newDay - ((newDay / 100) * 100);
                 x = x + 5;
             }
-            if (newDay > 10)   {
+            if (newDay >= 10)   {
                 Sprites::drawOverwrite(x, 18, Images::Font4x6, ((newDay / 10) + 26));
                 newDay = newDay % 10;
                 x = x + 5;

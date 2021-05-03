@@ -16,7 +16,6 @@
 #define DISPLAY_WIDTH 128
 #define DISPLAY_HEIGHT 64
 #define SOUNDS
-#define _SHOW_GOAL
 
 #define UPM 64 // int16_ts per meter
 
@@ -61,7 +60,7 @@ namespace Constants {
     constexpr uint16_t GearsMin[] = { Gear0Min, Gear1Min, Gear2Min, Gear3Min, Gear4Min, Gear5Min };
     constexpr uint16_t GearsMax[] = { Gear0Max, Gear1Max, Gear2Max, Gear3Max, Gear4Max, Gear5Max };
 
-    constexpr uint8_t PROGMEM GearboxX[] = { 0, 1, 1, 7, 7, 13 };
+    constexpr uint8_t PROGMEM GearboxX[] = { 0, 5, 5, 11, 11, 17 };
     constexpr uint8_t PROGMEM GearboxY[] = { 0, 1, 13, 1, 13, 1 };
 
     constexpr uint8_t NewDayBannerDelay = 100;

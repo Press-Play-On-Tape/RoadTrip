@@ -10,12 +10,12 @@ void renderHud() {
         case TransmissionType::Manual:
             {
                 uint8_t frame = arduboy.getFrameCount(8) / 2;
-                Sprites::drawPlusMask(1, 1, Images::Gearbox, 0);
+                Sprites::drawPlusMask(5, 1, Images::Gearbox, 0);
 
                 switch (car.getGear()) {
 
                     case 0:
-                        Sprites::drawPlusMask(7 + ((frame % 3) - 1), 7 + ((frame % 3) - 1), Images::Gearbox_Knob, 0);
+                        Sprites::drawPlusMask(11 + ((frame % 3) - 1), 7 + ((frame % 3) - 1), Images::Gearbox_Knob, 0);
                         break;
 
                     case 1 ... 5:
@@ -43,27 +43,26 @@ void renderHud() {
 
     {
         uint8_t tacho = car.getTacho();
-        uint8_t offset = car.getTransmissionType() == TransmissionType::Manual ? 0 : 4;
 
-        Sprites::drawOverwrite(26 + offset, 1, Images::Tacho, 0); // Render Tachometer gauge
-        arduboy.drawFastHLine(26 + offset, 9, 27, BLACK); // Lower horizontal line of frame
+        Sprites::drawOverwrite(28, 1, Images::Tacho, 0); // Render Tachometer gauge
+        arduboy.drawFastHLine(28, 9, 27, BLACK); // Lower horizontal line of frame
 
         if (tacho == 1) {
             // Flash a solid bar to warn when under revving
             if (arduboy.getFrameCountHalf(32)) {
-                arduboy.drawRect(28 + offset, 3, 2, 5, BLACK);
+                arduboy.drawRect(30, 3, 2, 5, BLACK);
             }
 
         }
         else {
 
-            for (uint8_t i = 0, x = 28; i < tacho; i++, x = x + 3) {
+            for (uint8_t i = 0, x = 30; i < tacho; i++, x = x + 3) {
                 switch (i) {
                     case 0 ... 5:
-                        arduboy.drawFastVLine(x + offset, 3, 5, BLACK); // Render low revs line
+                        arduboy.drawFastVLine(x, 3, 5, BLACK); // Render low revs line
                         break;
                     default:
-                        arduboy.drawRect(x + offset, 3, 2, 5, BLACK); // Render high revs bar
+                        arduboy.drawRect(x, 3, 2, 5, BLACK); // Render high revs bar
                         break;
                 }
 

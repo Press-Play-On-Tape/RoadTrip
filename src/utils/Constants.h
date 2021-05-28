@@ -61,7 +61,6 @@ namespace Constants {
     constexpr uint16_t GearsMax[] = { Gear0Max, Gear1Max, Gear2Max, Gear3Max, Gear4Max, Gear5Max };
 
     constexpr uint8_t PROGMEM GearboxX[] = { 0, 5, 5, 11, 11, 17 };
-    constexpr uint8_t PROGMEM GearboxY[] = { 0, 1, 13, 1, 13, 1 };
 
     constexpr uint8_t NewDayBannerDelay = 100;
     constexpr uint8_t NewDayBannerDelay_CountDown = 130;

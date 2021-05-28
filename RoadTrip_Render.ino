@@ -18,19 +18,14 @@ void renderHud() {
                         Sprites::drawPlusMask(11 + ((frame % 3) - 1), 7 + ((frame % 3) - 1), Images::Gearbox_Knob, 0);
                         break;
 
-                    case 1 ... 5:
-                        Sprites::drawPlusMask(pgm_read_byte(&Constants::GearboxX[car.getGear()]), pgm_read_byte(&Constants::GearboxY[car.getGear()]), Images::Gearbox_Knob, 0);
+                    default: // Gears 1 ... 5
+                        Sprites::drawPlusMask(pgm_read_byte(&Constants::GearboxX[car.getGear()]), (car.getGear() % 2) ? 1 : 13, Images::Gearbox_Knob, 0);
                         break;
-
-                    default: break;
-
                 }
-
             }
-            
             break;
 
-        case TransmissionType::Auto:
+        default: // TransmissionType::Auto:
         
             Sprites::drawExternalMask(1, 1, Images::AutoD, Images::AutoMask, 0, 0);
             Sprites::drawOverwrite(18, 6, Images::AutoNumbers, car.getGear() - 1);

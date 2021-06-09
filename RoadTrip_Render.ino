@@ -25,9 +25,10 @@ void renderHud() {
             }
             break;
 
-        default: // TransmissionType::Auto:
+        default: // TransmissionType::Auto
         
-            Sprites::drawExternalMask(1, 1, Images::AutoD, Images::AutoMask, 0, 0);
+            Sprites::drawPlusMask(1, 0, Images::AutoUpper, 0); // Upper half of automatic gears (masked)
+            Sprites::drawOverwrite(1, 8, Images::AutoLower, 0);// Lower half of automatic gears
             Sprites::drawOverwrite(18, 6, Images::AutoNumbers, car.getGear() - 1);
             break;
 

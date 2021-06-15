@@ -142,10 +142,26 @@ void title() {
             break;
 
         case TitleState::SelectTransmission:
+            
+            // Highlight transmission type selected
+            uint8_t xOffset = (car.getTransmissionType() == TransmissionType::Manual ? 42 : 0);
+            // Render upper horizontal edge
+            Sprites::drawPlusMask(25 + xOffset, 14, Images::TransmissionType_HighlightHorizontal, 0);
+            // Render lower horizontal edge
+            Sprites::drawPlusMask(25 + xOffset, 42, Images::TransmissionType_HighlightHorizontal, 0);
+            // Render vertical edges
+            for (uint8_t y = 14+4; y < 42; y = y + 7) {
+                Sprites::drawOverwrite(25 + xOffset, y, Images::TransmissionType_HighlightVertical, 0);
+                Sprites::drawOverwrite(53 + xOffset, y, Images::TransmissionType_HighlightVertical, 0);
+            };
 
-            Sprites::drawExternalMask(27, 16, Images::TransmissionType_Auto, Images::TransmissionType_Mask, 0, 0);
-            Sprites::drawExternalMask(69, 16, Images::TransmissionType_Manual, Images::TransmissionType_Mask, 0, 0);
-            Sprites::drawExternalMask(25 + (car.getTransmissionType() == TransmissionType::Manual ? 42 : 0), 14, Images::TransmissionType_Highlight, Images::TransmissionType_Highlight_Mask, 0, 0);
+            // Draw 'AT' title card - Automatic Transmission
+            Sprites::drawPlusMask(27, 16, Images::TransmissionType_Auto, 0);
+
+            // Draw 'MT' title card - Manual Transmission
+            Sprites::drawPlusMask(69, 16, Images::TransmissionType_Auto, 0);
+            Sprites::drawOverwrite(69+4, 16+2, Images::TransmissionType_Manual, 0); // Overwrite 'A' with 'M'
+
 
             if (arduboy.justPressed(A_BUTTON)) { 
 

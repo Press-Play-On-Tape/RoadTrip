@@ -293,24 +293,25 @@ void renderRoad_Dither_Light(int16_t &startPos, int16_t endPos, int16_t y, bool 
 
 void renderDayBanner() {
 
-    uint8_t x = 0;
+    uint8_t x = 53;
 
     if (gamePlayVars.showDayBannerCount > 0) {
 
-        Sprites::drawExternalMask(16, 8, Images::StartOfDay, Images::StartOfDay_Mask, 0, 0);
+        // Render 'New Day' banner from multiple image slices
+        Sprites::drawPlusMask(16,    8+5, Images::StartOfDay_Side, 0);
+        Sprites::drawPlusMask(16+91, 8+5, Images::StartOfDay_Side, 0);
+        
+        Sprites::drawPlusMask(16+3,  8, Images::StartOfDay, 0);
+        Sprites::drawPlusMask(16+3,  8+16, Images::StartOfDay, 1);
+        Sprites::drawOverwrite(16+2, 8+8, Images::StartOfDay_Mid, 0);
+                
+        Sprites::drawPlusMask(16+27, 8+24, Images::StartOfDay_Base, 0);
+        Sprites::drawPlusMask(16+65, 8+24, Images::StartOfDay_Base, 0);
 
-        switch (gamePlayVars.days) {
-            case 1 ... 9:
-                x = 48 + 5;
-                break;
-            case 10 ... 99:
-                x = 48 + 2;
-                break;
-            case 100 ... 9999:
-                x = 48;
-                break;
+
+        if (gamePlayVars.days > 10) {
+            x = x - 2;
         }
-
         Sprites::drawOverwrite(x, 18, Images::Day, 0);
         x = x + 18;
 
